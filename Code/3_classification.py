@@ -2,7 +2,7 @@
 # coding: utf-8
 import seaborn as sns
 from matplotlib import pyplot as plt
-from sklearn import datasets
+from sklearn import datasets, metrics
 import numpy as np
 import utils
 
@@ -16,27 +16,35 @@ def create_blob_dataset() -> [np.ndarray, np.ndarray]:
 
 def predict_1(x: np.ndarray) -> int:
     """Predict the class based on whether it is in the third quadrant."""
-    #raise NotImplementedError
-    if x[0] > 0 and x[1] < 0:
-        return 0
-    return 1
+    if x[0] < 0 and x[1] < 0:
+        return 0 #Class A
+    return 1 # Class B
 
 
 def predict_2(x: np.ndarray) -> int:
     """Predict the class based on whether it is below the line -x_0 = x_1."""
-    raise NotImplementedError
+    if -x[0] > x[1]:
+        return 0 #Class A
+    return 1 #Class B
+
 
 
 def accuracy(y: np.ndarray, y_pred: np.ndarray) -> float:
     """Calculate the accuracy of the prediction y_pred w.r.t. the true labels y."""
-    raise NotImplementedError
+    return metrics.accuracy_score(y, y_pred) * 100
+
+
 
 
 def get_boundaries() -> list:
     """Returns a list of boundary points e.g.
     [[-5, 0],[-2, 2],[-1,1],[1, 0.9],[4, 2],]
     """
-    raise NotImplementedError
+    return [[-5, 0],
+            [-0.8, -0.5],
+            [-0.1, 0.8],
+            [1.2, -0.3],
+            [5, 5]]
 
 
 def main():
