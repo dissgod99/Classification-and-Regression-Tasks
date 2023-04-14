@@ -16,7 +16,10 @@ def create_blob_dataset() -> [np.ndarray, np.ndarray]:
 
 def predict_1(x: np.ndarray) -> int:
     """Predict the class based on whether it is in the third quadrant."""
-    raise NotImplementedError
+    #raise NotImplementedError
+    if x[0] > 0 and x[1] < 0:
+        return 0
+    return 1
 
 
 def predict_2(x: np.ndarray) -> int:
