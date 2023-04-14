@@ -6,12 +6,17 @@ import numpy as np
 
 def visualize_data(X: np.ndarray, y: np.ndarray) -> None:
     """Visualizes the data points in a scatter plot."""
-    raise NotImplementedError
+    plt.scatter(x=X, y=y)
+    plt.title("Scatter plot of the provided data")
+    plt.xlabel("X values")
+    plt.ylabel("y values")
+    plt.legend()
+    plt.show()
 
 
 def perform_linear_regression(Xp: np.ndarray, y: np.ndarray) -> np.ndarray:
     """Computes the regression coefficients beta_hat."""
-    raise NotImplementedError
+    return np.linalg.inv(Xp.T @ Xp) @ Xp.T @ y
 
 
 def compute_predictions(Xp: np.ndarray, beta_hat: np.ndarray) -> np.ndarray:
