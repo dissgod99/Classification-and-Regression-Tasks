@@ -9,7 +9,9 @@ import utils
 
 def create_blob_dataset() -> [np.ndarray, np.ndarray]:
     """Create blobs of independent Gaussian distributions with centers at (-1.5,-1.5) and (1.5,1.5)"""
-    raise NotImplementedError
+    #raise NotImplementedError
+    X, y = datasets.make_blobs(n_samples=500, centers=[[-1.5, -1.5], [1.5, 1.5]], random_state=0)
+    return X, y
 
 
 def predict_1(x: np.ndarray) -> int:
