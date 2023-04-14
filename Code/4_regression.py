@@ -21,12 +21,14 @@ def perform_linear_regression(Xp: np.ndarray, y: np.ndarray) -> np.ndarray:
 
 def compute_predictions(Xp: np.ndarray, beta_hat: np.ndarray) -> np.ndarray:
     """Computes the corresponding prediction on the regression line for Xp."""
-    raise NotImplementedError
+    return Xp @ beta_hat
 
 
 def compute_mse(y: np.ndarray, y_pred: np.ndarray) -> float:
     """Computes the mean squared error."""
-    raise NotImplementedError
+    n = len(y)
+    tmp_array = (y - y_pred) ** 2
+    return 1/n * float(np.sum(tmp_array))
 
 
 def main():
